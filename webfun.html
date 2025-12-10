@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Rizzler — 4fun Discord Bot</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <title>/webfun — Rizzler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     body{
@@ -12,123 +12,59 @@
       background:#05050a;
       color:#fff;
     }
-    a{color:inherit;text-decoration:none}
+    a{text-decoration:none;color:inherit}
     .container{max-width:1100px;margin:auto;padding:24px}
-    header{display:flex;justify-content:space-between;align-items:center}
-    .btn{background:#9b5cff;padding:10px 16px;border-radius:999px;font-weight:600}
-    .ghost{border:1px solid #222;background:transparent;color:#aaa}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+    }
     .card{
       background:#0f1115;
       border:1px solid #222;
       border-radius:18px;
       padding:24px;
     }
-    .hidden{display:none}
-    .grid{display:grid;gap:20px}
-    .grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .btn{
+      background:#9b5cff;
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:600;
+      display:inline-block;
+      margin-top:12px;
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <header>
-    <h1>Rizzler<span style="color:#9b5cff">.</span></h1>
-    <div style="display:flex;gap:10px">
-      <a class="btn ghost" href="/" onclick="nav('/')">Home</a>
-      <a class="btn" href="/webfun" onclick="nav('/webfun')">/webfun</a>
-    </div>
-  </header>
-</div>
+  <a href="index.html" style="color:#aaa">← Back to home</a>
 
-<!-- HOME -->
-<section id="home" class="container">
-  <img src="baner.png" style="width:100%;border-radius:24px">
-  <h2 style="font-size:48px">A fun-first Discord bot</h2>
-  <p style="color:#aaa">
-    Rizzler is a 4fun Discord bot made for laughs, vibes and friendly chaos.
-    Tag someone, roll rizz and flex rare drops.
-  </p>
-</section>
-
-<!-- WEBFUN -->
-<section id="webfun" class="container hidden">
-  <h2 style="font-size:42px">/webfun</h2>
+  <h1 style="font-size:42px;margin-top:20px">/webfun</h1>
   <p style="color:#aaa;margin-bottom:30px">
     Choose a fun interaction
   </p>
 
-  <div class="grid grid-3">
+  <div class="grid">
     <div class="card">
       <h3>🎲 Rizz Pull</h3>
       <p style="color:#aaa">
-        Tag someone and pull rizz. Will you get Mythic?
+        Tag someone and pull rizz. Will you get the rarest one?
       </p>
-      <a class="btn" href="/webfun/rizzpull" onclick="nav('/webfun/rizzpull')">
-        Open
-      </a>
+      <a class="btn" href="rizzpull.html">Open</a>
     </div>
 
     <div class="card">
-      <h3>🔒 More soon</h3>
-      <p style="color:#aaa">
-        New /webfun interactions coming soon.
-      </p>
+      <h3>❤️ Love Meter</h3>
+      <p style="color:#555">Coming soon</p>
+    </div>
+
+    <div class="card">
+      <h3>🔥 Rate Me</h3>
+      <p style="color:#555">Coming soon</p>
     </div>
   </div>
-</section>
-
-<!-- RIZZ PULL -->
-<section id="rizzpull" class="container hidden">
-  <h2 style="font-size:42px">/webfun/rizzpull</h2>
-  <p style="color:#aaa">Tag someone and test your luck</p>
-
-  <div class="card" style="max-width:420px">
-    <input id="tag" placeholder="@friend" style="
-      width:100%;padding:12px;
-      border-radius:12px;
-      border:1px solid #222;
-      background:#000;color:#fff;
-      margin-bottom:12px
-    ">
-    <button class="btn" onclick="roll()">🎲 Pull Rizz</button>
-
-    <div id="result" style="margin-top:20px;font-size:22px;font-weight:800"></div>
-  </div>
-</section>
-
-<script>
-  const views = {
-    '/': 'home',
-    '/webfun': 'webfun',
-    '/webfun/rizzpull': 'rizzpull'
-  };
-
-  function nav(path){
-    history.pushState({},'',path);
-    render();
-  }
-
-  function render(){
-    Object.values(views).forEach(id=>{
-      document.getElementById(id).classList.add('hidden');
-    });
-    document.getElementById(views[location.pathname] || 'home')
-      .classList.remove('hidden');
-  }
-
-  function roll(){
-    const r = Math.random()*100;
-    let result = 'COMMON';
-    if(r < 0.5) result='MYTHIC 🤯';
-    else if(r < 20) result='RARE 🔥';
-
-    document.getElementById('result').innerText =
-      result + ' rizz pulled!';
-  }
-
-  window.onpopstate = render;
-  render();
-</script>
+</div>
 
 </body>
 </html>
