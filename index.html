@@ -102,64 +102,6 @@
     .modal .rarity-icon{width:86px;height:86px;border-radius:14px;display:grid;place-items:center;font-size:22px;font-weight:900}
     .close{background:transparent;border:0;color:var(--muted);cursor:pointer;font-weight:700}
 
-    /* Statistics Section */
-    .stats-section {
-      margin-top: 48px;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px;
-      margin-top: 24px;
-    }
-    .stat-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.03);
-      padding: 22px;
-      border-radius: 16px;
-      text-align: center;
-    }
-    .stat-value {
-      font-size: 36px;
-      font-weight: 800;
-      margin: 10px 0 6px;
-      background: linear-gradient(90deg, var(--accent), #ff6b9d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .stat-label {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    
-    /* Live indicator */
-    .live-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 59, 59, 0.1);
-      color: #ff3b3b;
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-weight: 600;
-      margin-left: 8px;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { opacity: 0.6; }
-      50% { opacity: 1; }
-      100% { opacity: 0.6; }
-    }
-    .live-dot {
-      width: 6px;
-      height: 6px;
-      background: #ff3b3b;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
     /* Premium Button */
     .btn.premium {
       background: linear-gradient(90deg, #ffd166, #f59e0b);
@@ -167,28 +109,9 @@
       box-shadow: 0 6px 18px rgba(245, 158, 11, 0.25);
     }
 
-    /* Loading animation */
-    .loading {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(155, 92, 255, 0.3);
-      border-radius: 50%;
-      border-top-color: var(--accent);
-      animation: spin 1s ease-in-out infinite;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
     /* small helpers */
     .muted{color:var(--muted)}
     .center{display:flex;align-items:center;justify-content:center}
-    
-    /* Status indicators */
-    .status-online { color: #6ee7b7; }
-    .status-offline { color: #ff6b6b; }
-    .status-warning { color: #fbbf24; }
   </style>
 </head>
 <body>
@@ -293,70 +216,6 @@
       </aside>
     </section>
 
-    <!-- Bot Statistics Section -->
-    <section class="stats-section" id="stats">
-      <h2 style="font-size:32px;margin-bottom:10px">
-        Rizzler Statistics 
-        <span class="live-indicator" id="liveIndicator">
-          <span class="live-dot"></span> <span id="statusText">LOADING</span>
-        </span>
-      </h2>
-      <p class="muted" style="margin-bottom:24px">Real-time statistics from <span id="apiSource">API</span></p>
-      
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">Total Servers</div>
-          <div class="stat-value" id="totalServers">
-            <span class="loading"></span>
-          </div>
-          <div class="muted" id="serverInfo">Connected servers</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Total Users</div>
-          <div class="stat-value" id="totalUsers">
-            <span class="loading"></span>
-          </div>
-          <div class="muted" id="userInfo">Estimated</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Uptime</div>
-          <div class="stat-value" id="uptime">
-            <span class="loading"></span>
-          </div>
-          <div class="muted" id="uptimeInfo">Bot status</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">API Status</div>
-          <div class="stat-value" id="apiStatus">
-            <span class="loading"></span>
-          </div>
-          <div class="muted" id="apiInfo">Connection</div>
-        </div>
-      </div>
-      
-      <!-- JSON API Info -->
-      <div style="margin-top: 32px; background: rgba(255,255,255,0.02); padding: 16px; border-radius: 12px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <span class="muted">API Endpoint</span>
-          <code style="background: rgba(155,92,255,0.1); padding: 4px 8px; border-radius: 6px; font-size: 12px;">/apibota.json</code>
-        </div>
-        <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; overflow: auto; max-height: 200px;">
-          <pre style="margin: 0; font-size: 11px; color: #9aa0a6;" id="jsonOutput">{
-  "status": "loading...",
-  "data": "Fetching API response"
-}</pre>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-top: 12px;">
-          <span class="muted" id="lastUpdated">Last updated: --:--:--</span>
-          <button class="btn ghost" style="padding: 4px 12px; font-size: 12px;" id="refreshApi">🔄 Refresh</button>
-        </div>
-      </div>
-      
-      <div style="text-align:center;margin-top:24px">
-        <div class="muted">Data updates every 30 seconds • Powered by JSON API</div>
-      </div>
-    </section>
-
     <!-- more features / philosophy -->
     <section id="how" style="margin-top:28px">
       <div class="container" style="padding:0">
@@ -383,7 +242,6 @@
       © <span id="year"></span> Rizzler — Built for fun on Discord • 
       <a href="commands.html" style="color:var(--muted);text-decoration:none">Commands</a> • 
       <a href="premium.html" style="color:var(--muted);text-decoration:none">Premium</a> • 
-      <a href="/apibota.json" target="_blank" style="color:var(--muted);text-decoration:none">API JSON</a> • 
       <span class="muted">baner.png / logo.png</span>
     </footer>
   </div>
@@ -416,22 +274,24 @@
   </div>
 
   <script>
-    // =============================================
-    // KONFIGURACJA API
-    // =============================================
-    const API_URL = '/apibota.json'; // Lokalny plik JSON
-    const BOT_ID = '1340707124929495191';
+    // small helper: random roll with rarities
+    const probabilities = [
+      {name:'MYTHIC', chance:0.5},
+      {name:'RARE', chance:19.5},
+      {name:'COMMON', chance:80}
+    ];
     
-    // Cache danych
-    let botStats = {
-      servers: 0,
-      users: 0,
-      uptime: '0%',
-      lastUpdated: null,
-      apiStatus: 'loading'
-    };
+    // convert to 0-100 cumulative
+    function rollRarity(){
+      const r = Math.random()*100;
+      let cum = 0;
+      for(const p of probabilities){
+        cum += p.chance;
+        if(r <= cum) return p.name;
+      }
+      return 'COMMON';
+    }
 
-    // Elementy DOM
     const rollBtn = document.getElementById('rollBtn');
     const tagInput = document.getElementById('tagInput');
     const recent = document.getElementById('recent');
@@ -449,261 +309,50 @@
     const howBtn = document.getElementById('howBtn');
     const rarityPreview = document.getElementById('rarityPreview');
     const premiumBtns = document.querySelectorAll('#premiumBtn, #premiumBtn2');
-    const refreshApiBtn = document.getElementById('refreshApi');
-    
-    // Elementy statystyk
-    const totalServers = document.getElementById('totalServers');
-    const totalUsers = document.getElementById('totalUsers');
-    const uptime = document.getElementById('uptime');
-    const apiStatusElement = document.getElementById('apiStatus');
-    const lastUpdated = document.getElementById('lastUpdated');
-    const statusText = document.getElementById('statusText');
-    const liveIndicator = document.getElementById('liveIndicator');
-    const liveDot = liveIndicator.querySelector('.live-dot');
-    const jsonOutput = document.getElementById('jsonOutput');
-    const apiSource = document.getElementById('apiSource');
 
-    // =============================================
-    // FUNKCJE API
-    // =============================================
-
-    // 1. Pobierz dane z JSON API
-    async function fetchBotStats() {
-      try {
-        console.log(`Fetching from ${API_URL}...`);
-        
-        // Dodaj timestamp aby uniknąć cache
-        const url = `${API_URL}?t=${Date.now()}`;
-        const response = await fetch(url);
-        
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log('API response:', data);
-        
-        // Wyświetl surowy JSON
-        jsonOutput.textContent = JSON.stringify(data, null, 2);
-        
-        // Sprawdź strukturę JSON (obsługuj różne formaty)
-        if (data.servers !== undefined) {
-          // Format: {"servers": 123, "users": 456, "uptime": "99%"}
-          botStats = {
-            servers: data.servers || 0,
-            users: data.users || 0,
-            uptime: data.uptime || '0%',
-            lastUpdated: new Date(data.timestamp || Date.now()),
-            apiStatus: 'online'
-          };
-        } else if (data.data && data.data.servers !== undefined) {
-          // Format: {"status": "success", "data": {"servers": 123, ...}}
-          botStats = {
-            servers: data.data.servers || 0,
-            users: data.data.users || 0,
-            uptime: data.data.uptime || '0%',
-            lastUpdated: new Date(data.data.timestamp || Date.now()),
-            apiStatus: data.status || 'online'
-          };
-        } else if (data.count !== undefined) {
-          // Format: {"count": 123}
-          botStats = {
-            servers: data.count || 0,
-            users: (data.count || 0) * 25, // Szacuj użytkowników
-            uptime: '99%',
-            lastUpdated: new Date(),
-            apiStatus: 'online'
-          };
-        } else {
-          throw new Error('Invalid JSON format');
-        }
-        
-        updateStatsDisplay();
-        return true;
-        
-      } catch (error) {
-        console.error('Error fetching API:', error);
-        
-        // Użyj fallback danych
-        useFallbackStats();
-        
-        // Pokaż błąd w JSON preview
-        jsonOutput.textContent = JSON.stringify({
-          error: error.message,
-          status: "offline",
-          timestamp: new Date().toISOString(),
-          note: "Using fallback data"
-        }, null, 2);
-        
-        return false;
-      }
-    }
-
-    // 2. Fallback stats jeśli API nie działa
-    function useFallbackStats() {
-      console.log('Using fallback stats');
-      
-      // Sprawdź localStorage
-      const savedStats = localStorage.getItem('rizzler_api_stats');
-      const savedTime = localStorage.getItem('rizzler_api_time');
-      
-      if (savedStats && savedTime) {
-        const timeDiff = Date.now() - parseInt(savedTime);
-        if (timeDiff < 5 * 60 * 1000) { // 5 minut
-          const stats = JSON.parse(savedStats);
-          botStats = { ...botStats, ...stats };
-          updateStatsDisplay();
-          return;
-        }
-      }
-      
-      // Symuluj dane
-      const now = new Date();
-      botStats = {
-        servers: 1247 + Math.floor(Math.sin(now.getHours()) * 20),
-        users: 28591 + Math.floor(Math.random() * 1000),
-        uptime: '99.' + (Math.floor(Math.random() * 9) + 1) + '%',
-        lastUpdated: now,
-        apiStatus: 'cached'
-      };
-      
-      // Zapisz w localStorage
-      localStorage.setItem('rizzler_api_stats', JSON.stringify(botStats));
-      localStorage.setItem('rizzler_api_time', Date.now().toString());
-      
-      updateStatsDisplay();
-    }
-
-    // 3. Aktualizuj wyświetlanie
-    function updateStatsDisplay() {
-      const now = new Date();
-      
-      // Formatuj liczby
-      totalServers.innerHTML = `<span class="status-online">${botStats.servers.toLocaleString()}</span>`;
-      totalUsers.innerHTML = `<span class="status-online">${botStats.users.toLocaleString()}</span>`;
-      uptime.innerHTML = `<span class="status-online">${botStats.uptime}</span>`;
-      
-      // Status API
-      if (botStats.apiStatus === 'online') {
-        apiStatusElement.innerHTML = `<span class="status-online">ONLINE</span>`;
-        apiSource.textContent = 'Live API';
-      } else if (botStats.apiStatus === 'cached') {
-        apiStatusElement.innerHTML = `<span class="status-warning">CACHED</span>`;
-        apiSource.textContent = 'Cached Data';
-      } else {
-        apiStatusElement.innerHTML = `<span class="status-offline">OFFLINE</span>`;
-        apiSource.textContent = 'Fallback Data';
-      }
-      
-      // Aktualizuj czas
-      const lastUpdateTime = botStats.lastUpdated ? 
-        `${botStats.lastUpdated.getHours().toString().padStart(2, '0')}:${botStats.lastUpdated.getMinutes().toString().padStart(2, '0')}:${botStats.lastUpdated.getSeconds().toString().padStart(2, '0')}` : 
-        '--:--:--';
-      
-      lastUpdated.textContent = `Last updated: ${lastUpdateTime}`;
-      
-      // Aktualizuj wskaźnik statusu
-      updateStatusIndicator();
-    }
-
-    function updateStatusIndicator() {
-      const now = new Date();
-      const timeSinceUpdate = botStats.lastUpdated ? now - botStats.lastUpdated : Infinity;
-      
-      if (botStats.apiStatus === 'online' && timeSinceUpdate < 30000) {
-        statusText.textContent = 'LIVE';
-        liveIndicator.style.background = 'rgba(59, 255, 100, 0.1)';
-        liveIndicator.style.color = '#3bff64';
-        liveDot.style.background = '#3bff64';
-      } else if (timeSinceUpdate < 120000) {
-        statusText.textContent = 'CACHED';
-        liveIndicator.style.background = 'rgba(255, 193, 7, 0.1)';
-        liveIndicator.style.color = '#ffc107';
-        liveDot.style.background = '#ffc107';
-      } else {
-        statusText.textContent = 'OFFLINE';
-        liveIndicator.style.background = 'rgba(255, 59, 59, 0.1)';
-        liveIndicator.style.color = '#ff3b3b';
-        liveDot.style.background = '#ff3b3b';
-      }
-    }
-
-    // =============================================
-    // KOD DO PULLI
-    // =============================================
-
-    // Preview cycle dla flair
+    // preview cycle for flair (just cosmetic)
     let previewCycle = ['Common','Rare','Legendary'];
     let pIdx = 0;
-    setInterval(() => { 
-      rarityPreview.textContent = previewCycle[pIdx % previewCycle.length]; 
-      pIdx++; 
-    }, 2400);
+    setInterval(()=>{ rarityPreview.textContent = previewCycle[pIdx%previewCycle.length]; pIdx++ }, 2400);
 
-    // Funkcja do rzucania rzadkością
-    const probabilities = [
-      {name:'MYTHIC', chance:0.5},
-      {name:'RARE', chance:19.5},
-      {name:'COMMON', chance:80}
-    ];
-
-    function rollRarity(){
-      const r = Math.random()*100;
-      let cum = 0;
-      for(const p of probabilities){
-        cum += p.chance;
-        if(r <= cum) return p.name;
-      }
-      return 'COMMON';
-    }
-
-    // Event listeners dla przycisków
-    rollBtn.addEventListener('click', () => {
+    rollBtn.addEventListener('click', ()=>{
       const target = tagInput.value.trim() || 'someone';
       doRoll(target);
     });
 
-    againBtn.addEventListener('click', () => {
+    againBtn.addEventListener('click', ()=>{
       const target = tagInput.value.trim() || 'someone';
       doRoll(target);
     });
 
-    closeModal.addEventListener('click', () => hideModal());
-    modal.addEventListener('click', (e) => { 
-      if (e.target === modal) hideModal(); 
-    });
+    closeModal.addEventListener('click', ()=> hideModal());
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) hideModal(); });
 
-    shareBtn.addEventListener('click', () => {
+    shareBtn.addEventListener('click', ()=>{
       const text = `${modalRarity.textContent} rizz pulled for ${modalTag.textContent.replace('for ','')} — check out Rizzler!`;
-      if (navigator.share) {
-        navigator.share({ text }).catch(() => alert('Could not share'));
+      if(navigator.share){
+        navigator.share({text}).catch(()=>alert('Could not share'));
       } else {
-        navigator.clipboard.writeText(text).then(() => alert('Result copied to clipboard'));
+        navigator.clipboard.writeText(text).then(()=> alert('Result copied to clipboard'));
       }
     });
 
-    refreshApiBtn.addEventListener('click', () => {
-      fetchBotStats();
-    });
-
-    // Główne funkcje dla pulli
-    function doRoll(target) {
+    function doRoll(target){
       const rarity = rollRarity();
       showModal(rarity, target);
       addRecent(rarity, target);
     }
 
-    function showModal(rarity, target) {
+    function showModal(rarity, target){
       modalRarity.textContent = rarity;
       modalTag.textContent = 'for ' + target;
       modalTitle.textContent = `You pulled:`;
-      
-      if (rarity === 'MYTHIC') {
+      if(rarity === 'MYTHIC'){
         modalDesc.textContent = "Insane pull! You got a MYTHIC rizz — flex it proudly.";
         modalRarity.style.color = '#ffd166';
         rarityIcon.style.background = 'linear-gradient(90deg,#f97316,#f43f5e)';
         rarityIcon.textContent = '✨';
-      } else if (rarity === 'RARE') {
+      } else if(rarity === 'RARE'){
         modalDesc.textContent = "Nice! A Rare rizz. Not everyone gets this.";
         modalRarity.style.color = '#9b5cff';
         rarityIcon.style.background = 'linear-gradient(90deg,#3b82f6,#7c3aed)';
@@ -714,17 +363,16 @@
         rarityIcon.style.background = 'linear-gradient(90deg,#111,#222)';
         rarityIcon.textContent = '•';
       }
-      
       modal.style.display = 'flex';
       modal.setAttribute('aria-hidden','false');
     }
 
-    function hideModal() {
+    function hideModal(){
       modal.style.display = 'none';
       modal.setAttribute('aria-hidden','true');
     }
 
-    function addRecent(rarity, target) {
+    function addRecent(rarity, target){
       const row = document.createElement('div');
       row.style.display = 'flex';
       row.style.justifyContent = 'space-between';
@@ -736,76 +384,49 @@
 
       const left = document.createElement('div');
       left.innerHTML = `<strong style="font-weight:700">${target}</strong> <span style="color:var(--muted);margin-left:8px;font-size:13px">${new Date().toLocaleTimeString()}</span>`;
-      
       const right = document.createElement('div');
       right.textContent = rarity;
       right.style.fontWeight = '800';
       right.style.fontSize = '13px';
-      
-      if (rarity === 'MYTHIC') { 
-        right.style.color = '#ffd166';
-      } else if (rarity === 'RARE') { 
-        right.style.color = '#9b5cff';
-      } else { 
-        right.style.color = '#cfcfcf';
-      }
+      if(rarity === 'MYTHIC'){ right.style.color = '#ffd166' } 
+      else if(rarity === 'RARE'){ right.style.color = '#9b5cff' } 
+      else { right.style.color = '#cfcfcf' }
 
       row.appendChild(left);
       row.appendChild(right);
 
+      // prepend
       recent.prepend(row);
-      
-      while (recent.children.length > 6) {
-        recent.removeChild(recent.lastChild);
-      }
+      // limit recent list
+      while(recent.children.length > 6) recent.removeChild(recent.lastChild);
     }
 
-    // =============================================
-    // INICJALIZACJA
-    // =============================================
-
-    document.addEventListener('DOMContentLoaded', function() {
-      // Ustaw rok
-      document.getElementById('year').textContent = new Date().getFullYear();
-      
-      // Pobierz statystyki przy ładowaniu
-      fetchBotStats();
-      
-      // Odświeżaj co 30 sekund
-      setInterval(fetchBotStats, 30000);
-      
-      // Automatycznie odświeżaj co 5 minut nawet jeśli jest błąd
-      setInterval(() => {
-        if (botStats.apiStatus !== 'online') {
-          fetchBotStats();
-        }
-      }, 300000);
-    });
-
-    // Event listeners dla przycisków nawigacyjnych
-    inviteBtns.forEach(b => b.addEventListener('click', (e) => { 
+    // buttons behavior
+    inviteBtns.forEach(b => b.addEventListener('click', (e)=>{ 
       e.preventDefault(); 
-      window.open(`https://discord.com/oauth2/authorize?client_id=${BOT_ID}&permissions=0&scope=bot%20applications.commands`, '_blank');
+      window.open('https://discord.com/oauth2/authorize?client_id=1340707124929495191&permissions=0&scope=bot%20applications.commands', '_blank');
     }));
     
-    commandsBtn.addEventListener('click', (e) => { 
-      // Już połączony z commands.html przez href
+    commandsBtn.addEventListener('click', (e)=>{ 
+      // Already linked to commands.html via href
     });
     
-    premiumBtns.forEach(b => b.addEventListener('click', (e) => { 
-      // Już połączony z premium.html przez href
+    premiumBtns.forEach(b => b.addEventListener('click', (e)=>{ 
+      // Already linked to premium.html via href
     }));
     
-    howBtn.addEventListener('click', (e) => { 
+    howBtn.addEventListener('click', (e)=>{ 
       e.preventDefault(); 
-      document.getElementById('how').scrollIntoView({behavior:'smooth'});
+      document.getElementById('how').scrollIntoView({behavior:'smooth'}) 
     });
+
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Accessibility: focus trap basic (keyboard close)
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') hideModal();
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') hideModal();
     });
-
   </script>
 </body>
 </html>
