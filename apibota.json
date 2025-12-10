@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "timestamp": "2024-12-17T14:30:00.000Z",
+  "bot_id": "1340707124929495191",
+  "bot_name": "Rizzler",
+  "data": {
+    "servers": 1247,
+    "users": 28591,
+    "uptime": "99.8%",
+    "commands_today": 842,
+    "pulls_today": 317,
+    "mythic_pulls": 5,
+    "mythic_rate": "0.42%"
+  },
+  "version": "1.0",
+  "source": "BotGhost Live Data"
+}
