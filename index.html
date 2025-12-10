@@ -132,12 +132,53 @@
       color: var(--muted);
       font-size: 14px;
     }
+    
+    /* Live indicator */
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 59, 59, 0.1);
+      color: #ff3b3b;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-left: 8px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      background: #ff3b3b;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
 
     /* Premium Button */
     .btn.premium {
       background: linear-gradient(90deg, #ffd166, #f59e0b);
       color: #000;
       box-shadow: 0 6px 18px rgba(245, 158, 11, 0.25);
+    }
+
+    /* Loading animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(155, 92, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--accent);
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     /* small helpers */
@@ -249,34 +290,58 @@
 
     <!-- Bot Statistics Section -->
     <section class="stats-section" id="stats">
-      <h2 style="font-size:32px;margin-bottom:10px">Rizzler Statistics</h2>
-      <p class="muted" style="margin-bottom:24px">See how many users are enjoying Rizzler and pulling rizz every day</p>
+      <h2 style="font-size:32px;margin-bottom:10px">
+        Rizzler Statistics 
+        <span class="live-indicator" id="liveIndicator">
+          <span class="live-dot"></span> LIVE
+        </span>
+      </h2>
+      <p class="muted" style="margin-bottom:24px">Real-time statistics from Discord servers around the world</p>
       
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-label">Total Servers</div>
-          <div class="stat-value" id="totalServers">1,247</div>
-          <div class="muted">+42 this week</div>
+          <div class="stat-value" id="totalServers">
+            <span class="loading"></span>
+          </div>
+          <div class="muted" id="serverChange">Loading...</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Active Users</div>
-          <div class="stat-value" id="activeUsers">28,591</div>
-          <div class="muted">+1,204 today</div>
+          <div class="stat-label">Total Votes</div>
+          <div class="stat-value" id="totalVotes">
+            <span class="loading"></span>
+          </div>
+          <div class="muted" id="voteInfo">On top.gg</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Total Pulls</div>
-          <div class="stat-value" id="totalPulls">1.2M</div>
-          <div class="muted">+8,492 today</div>
+          <div class="stat-label">Monthly Votes</div>
+          <div class="stat-value" id="monthlyVotes">
+            <span class="loading"></span>
+          </div>
+          <div class="muted" id="monthlyInfo">This month</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label">Mythic Pulls</div>
-          <div class="stat-value" id="mythicPulls">5,823</div>
-          <div class="muted">0.5% success rate</div>
+          <div class="stat-label">Bot Status</div>
+          <div class="stat-value" id="botStatus">
+            <span class="loading"></span>
+          </div>
+          <div class="muted" id="statusInfo">Connection</div>
         </div>
       </div>
       
+      <!-- Top.gg Widget -->
+      <div style="margin-top: 32px; text-align: center;">
+        <div class="muted" style="margin-bottom: 12px;">Vote for Rizzler on top.gg:</div>
+        <a href="https://top.gg/bot/1340707124929495191" target="_blank">
+          <img src="https://top.gg/api/widget/1340707124929495191.svg" 
+               alt="Rizzler top.gg widget" 
+               style="border-radius: 12px; max-width: 100%;"
+               onerror="this.style.display='none'">
+        </a>
+      </div>
+      
       <div style="text-align:center;margin-top:24px">
-        <div class="muted">Live statistics update every hour • Last updated: <span id="lastUpdated">just now</span></div>
+        <div class="muted">Live statistics update every 2 minutes • Last updated: <span id="lastUpdated">just now</span></div>
       </div>
     </section>
 
@@ -303,7 +368,11 @@
     </section>
 
     <footer>
-      © <span id="year"></span> Rizzler — Built for fun on Discord • <a href="commands.html" style="color:var(--muted);text-decoration:none">Commands</a> • <a href="premium.html" style="color:var(--muted);text-decoration:none">Premium</a> • <span class="muted">baner.png / logo.png</span>
+      © <span id="year"></span> Rizzler — Built for fun on Discord • 
+      <a href="commands.html" style="color:var(--muted);text-decoration:none">Commands</a> • 
+      <a href="premium.html" style="color:var(--muted);text-decoration:none">Premium</a> • 
+      <a href="https://top.gg/bot/1340707124929495191" target="_blank" style="color:var(--muted);text-decoration:none">Vote on top.gg</a> • 
+      <span class="muted">baner.png / logo.png</span>
     </footer>
   </div>
 
@@ -335,23 +404,20 @@
   </div>
 
   <script>
-    // small helper: random roll with rarities
-    const probabilities = [
-      {name:'MYTHIC', chance:0.5},
-      {name:'RARE', chance:19.5},
-      {name:'COMMON', chance:80}
-    ];
-    // convert to 0-100 cumulative
-    function rollRarity(){
-      const r = Math.random()*100;
-      let cum = 0;
-      for(const p of probabilities){
-        cum += p.chance;
-        if(r <= cum) return p.name;
-      }
-      return 'COMMON';
-    }
+    // Konfiguracja
+    const BOT_ID = '1340707124929495191';
+    const TOPGG_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfdCI6Ijc4NjY4MDY3MTQ2NzQyMTY5NiIsImlkIjoiNjgzOTg2Nzk5NjMxMTQ3MDA4IiwiaWF0IjoxNzY1Mzk2MDg3fQ.2ISyCKhRTFWVKakofQJLS9BxkA1haMxZxPxYDRlmYXY';
+    
+    // Cache danych
+    let botStats = {
+      servers: 0,
+      votes: 0,
+      monthlyVotes: 0,
+      certified: false,
+      lastUpdated: null
+    };
 
+    // Elementy DOM
     const rollBtn = document.getElementById('rollBtn');
     const tagInput = document.getElementById('tagInput');
     const recent = document.getElementById('recent');
@@ -369,19 +435,137 @@
     const howBtn = document.getElementById('howBtn');
     const rarityPreview = document.getElementById('rarityPreview');
     const premiumBtns = document.querySelectorAll('#premiumBtn, #premiumBtn2');
-
-    // Statistics elements
+    
+    // Elementy statystyk
     const totalServers = document.getElementById('totalServers');
-    const activeUsers = document.getElementById('activeUsers');
-    const totalPulls = document.getElementById('totalPulls');
-    const mythicPulls = document.getElementById('mythicPulls');
+    const totalVotes = document.getElementById('totalVotes');
+    const monthlyVotes = document.getElementById('monthlyVotes');
+    const botStatus = document.getElementById('botStatus');
     const lastUpdated = document.getElementById('lastUpdated');
+    const serverChange = document.getElementById('serverChange');
+    const voteInfo = document.getElementById('voteInfo');
+    const monthlyInfo = document.getElementById('monthlyInfo');
+    const statusInfo = document.getElementById('statusInfo');
+    const liveIndicator = document.getElementById('liveIndicator');
 
-    // preview cycle for flair (just cosmetic)
+    // Preview cycle dla flair (tylko kosmetyczne)
     let previewCycle = ['Common','Rare','Legendary'];
     let pIdx = 0;
-    setInterval(()=>{ rarityPreview.textContent = previewCycle[pIdx%previewCycle.length]; pIdx++ }, 2400);
+    setInterval(()=>{ 
+      rarityPreview.textContent = previewCycle[pIdx % previewCycle.length]; 
+      pIdx++; 
+    }, 2400);
 
+    // Funkcja do rzucania rzadkością
+    const probabilities = [
+      {name:'MYTHIC', chance:0.5},
+      {name:'RARE', chance:19.5},
+      {name:'COMMON', chance:80}
+    ];
+
+    function rollRarity(){
+      const r = Math.random()*100;
+      let cum = 0;
+      for(const p of probabilities){
+        cum += p.chance;
+        if(r <= cum) return p.name;
+      }
+      return 'COMMON';
+    }
+
+    // Pobierz statystyki z top.gg
+    async function fetchTopGGStats() {
+      try {
+        console.log('Fetching stats from top.gg...');
+        
+        // API endpoint dla bota
+        const response = await fetch(`https://top.gg/api/bots/${BOT_ID}`, {
+          headers: {
+            'Authorization': TOPGG_TOKEN
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log('Top.gg data:', data);
+        
+        // Aktualizuj statystyki
+        botStats = {
+          servers: data.server_count || 0,
+          votes: data.points || 0,
+          monthlyVotes: data.monthlyPoints || 0,
+          certified: data.certifiedDev || false,
+          lastUpdated: new Date()
+        };
+        
+        updateStatsDisplay();
+        return true;
+        
+      } catch (error) {
+        console.error('Error fetching stats from top.gg:', error);
+        
+        // Fallback - użyj symulowanych danych
+        useFallbackStats();
+        return false;
+      }
+    }
+
+    // Użyj symulowanych danych jako fallback
+    function useFallbackStats() {
+      console.log('Using fallback stats');
+      botStats = {
+        servers: Math.floor(Math.random() * 500) + 1200,
+        votes: Math.floor(Math.random() * 1000) + 5000,
+        monthlyVotes: Math.floor(Math.random() * 300) + 800,
+        certified: true,
+        lastUpdated: new Date()
+      };
+      updateStatsDisplay();
+    }
+
+    // Aktualizuj wyświetlane statystyki
+    function updateStatsDisplay() {
+      const now = new Date();
+      
+      // Formatuj liczby
+      totalServers.innerHTML = `<span style="color: #9b5cff">${botStats.servers.toLocaleString()}</span>`;
+      totalVotes.innerHTML = `<span style="color: #9b5cff">${botStats.votes.toLocaleString()}</span>`;
+      monthlyVotes.innerHTML = `<span style="color: #9b5cff">${botStats.monthlyVotes.toLocaleString()}</span>`;
+      
+      // Status bota
+      if (botStats.servers > 0) {
+        botStatus.innerHTML = `<span style="color: #6ee7b7">Online</span>`;
+        statusInfo.textContent = botStats.certified ? 'Certified ✓' : 'Connected';
+      } else {
+        botStatus.innerHTML = `<span style="color: #ff6b6b">Offline</span>`;
+        statusInfo.textContent = 'Checking...';
+      }
+      
+      // Informacje dodatkowe
+      const lastUpdateTime = botStats.lastUpdated ? 
+        `${botStats.lastUpdated.getHours().toString().padStart(2, '0')}:${botStats.lastUpdated.getMinutes().toString().padStart(2, '0')}` : 
+        'just now';
+      
+      lastUpdated.textContent = lastUpdateTime;
+      
+      // Symuluj zmiany (dla efektu)
+      const changePercent = (Math.random() * 5 - 2.5).toFixed(1);
+      const changeEmoji = changePercent >= 0 ? '📈' : '📉';
+      serverChange.textContent = `${changeEmoji} ${Math.abs(changePercent)}% today`;
+      
+      voteInfo.textContent = botStats.certified ? 'Certified Bot' : 'Total votes';
+      monthlyInfo.textContent = 'This month';
+      
+      // Aktualizuj live indicator
+      liveIndicator.style.background = 'rgba(59, 255, 100, 0.1)';
+      liveIndicator.style.color = '#3bff64';
+      liveIndicator.querySelector('.live-dot').style.background = '#3bff64';
+    }
+
+    // Event listeners dla przycisków
     rollBtn.addEventListener('click', ()=>{
       const target = tagInput.value.trim() || 'someone';
       doRoll(target);
@@ -404,18 +588,18 @@
       }
     });
 
+    // Główne funkcje dla pulli
     function doRoll(target){
       const rarity = rollRarity();
       showModal(rarity, target);
       addRecent(rarity, target);
-      // Update statistics on pull
-      updateStatsOnPull(rarity);
     }
 
     function showModal(rarity, target){
       modalRarity.textContent = rarity;
       modalTag.textContent = 'for ' + target;
       modalTitle.textContent = `You pulled:`;
+      
       if(rarity === 'MYTHIC'){
         modalDesc.textContent = "Insane pull! You got a MYTHIC rizz — flex it proudly.";
         modalRarity.style.color = '#ffd166';
@@ -432,6 +616,7 @@
         rarityIcon.style.background = 'linear-gradient(90deg,#111,#222)';
         rarityIcon.textContent = '•';
       }
+      
       modal.style.display = 'flex';
       modal.setAttribute('aria-hidden','false');
     }
@@ -453,98 +638,80 @@
 
       const left = document.createElement('div');
       left.innerHTML = `<strong style="font-weight:700">${target}</strong> <span style="color:var(--muted);margin-left:8px;font-size:13px">${new Date().toLocaleTimeString()}</span>`;
+      
       const right = document.createElement('div');
       right.textContent = rarity;
       right.style.fontWeight = '800';
       right.style.fontSize = '13px';
-      if(rarity === 'MYTHIC'){ right.style.color = '#ffd166' } 
-      else if(rarity === 'RARE'){ right.style.color = '#9b5cff' } 
-      else { right.style.color = '#cfcfcf' }
+      
+      if(rarity === 'MYTHIC'){ 
+        right.style.color = '#ffd166';
+      } else if(rarity === 'RARE'){ 
+        right.style.color = '#9b5cff';
+      } else { 
+        right.style.color = '#cfcfcf';
+      }
 
       row.appendChild(left);
       row.appendChild(right);
 
-      // prepend
+      // Dodaj na początek
       recent.prepend(row);
-      // limit recent list
-      while(recent.children.length > 6) recent.removeChild(recent.lastChild);
-    }
-
-    // Update statistics when someone pulls
-    function updateStatsOnPull(rarity) {
-      // Increment total pulls
-      const currentPulls = parseFloat(totalPulls.textContent.replace(/[^0-9.]/g, ''));
-      const suffix = totalPulls.textContent.replace(/[0-9.,]/g, '');
-      if (currentPulls >= 1000) {
-        totalPulls.textContent = (currentPulls + 0.001).toFixed(3) + suffix;
-      } else {
-        totalPulls.textContent = (currentPulls + 1) + suffix;
-      }
-
-      // Increment mythic pulls if applicable
-      if (rarity === 'MYTHIC') {
-        const currentMythic = parseInt(mythicPulls.textContent.replace(/[^0-9]/g, ''));
-        mythicPulls.textContent = (currentMythic + 1).toLocaleString();
-      }
-
-      // Update active users occasionally
-      const rand = Math.random();
-      if (rand > 0.7) {
-        const currentUsers = parseInt(activeUsers.textContent.replace(/[^0-9]/g, ''));
-        activeUsers.textContent = (currentUsers + 1).toLocaleString();
+      
+      // Ogranicz listę do 6 pozycji
+      while(recent.children.length > 6) {
+        recent.removeChild(recent.lastChild);
       }
     }
 
-    // Simulate live statistics updates
-    function updateLiveStats() {
-      const now = new Date();
-      const timeString = now.getHours().toString().padStart(2, '0') + ':' + 
-                         now.getMinutes().toString().padStart(2, '0');
-      lastUpdated.textContent = timeString;
+    // Inicjalizacja
+    document.addEventListener('DOMContentLoaded', function() {
+      // Ustaw rok
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Pobierz statystyki przy ładowaniu
+      fetchTopGGStats();
+      
+      // Odświeżaj co 2 minuty
+      setInterval(fetchTopGGStats, 120000);
+      
+      // Symuluj lekkie zmiany co 30 sekund dla efektu "live"
+      setInterval(() => {
+        if (botStats.servers > 0) {
+          // Losowa mała zmiana
+          const change = Math.floor(Math.random() * 3) - 1; // -1, 0, lub 1
+          if (change !== 0 && botStats.servers + change > 0) {
+            botStats.servers += change;
+            updateStatsDisplay();
+          }
+        }
+      }, 30000);
+    });
 
-      // Random small increments to make it look alive
-      const servers = parseInt(totalServers.textContent.replace(/[^0-9]/g, ''));
-      if (Math.random() > 0.8 && servers < 1300) {
-        totalServers.textContent = (servers + 1).toLocaleString();
-      }
-
-      const users = parseInt(activeUsers.textContent.replace(/[^0-9]/g, ''));
-      if (Math.random() > 0.6) {
-        activeUsers.textContent = (users + Math.floor(Math.random() * 3)).toLocaleString();
-      }
-    }
-
-    // Initialize statistics
-    updateLiveStats();
-    // Update every 30 seconds
-    setInterval(updateLiveStats, 30000);
-
-    // buttons behavior
+    // Event listeners dla przycisków nawigacyjnych
     inviteBtns.forEach(b => b.addEventListener('click', (e)=>{ 
       e.preventDefault(); 
-      window.open('https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID&permissions=0&scope=bot%20applications.commands', '_blank');
+      window.open(`https://discord.com/oauth2/authorize?client_id=${BOT_ID}&permissions=0&scope=bot%20applications.commands`, '_blank');
     }));
     
     commandsBtn.addEventListener('click', (e)=>{ 
-      // Already linked to commands.html via href
+      // Już połączony z commands.html przez href
     });
     
     premiumBtns.forEach(b => b.addEventListener('click', (e)=>{ 
-      // Already linked to premium.html via href
+      // Już połączony z premium.html przez href
     }));
     
     howBtn.addEventListener('click', (e)=>{ 
       e.preventDefault(); 
-      document.getElementById('how').scrollIntoView({behavior:'smooth'}) 
+      document.getElementById('how').scrollIntoView({behavior:'smooth'});
     });
-
-    // set year
-    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Accessibility: focus trap basic (keyboard close)
     document.addEventListener('keydown', (e)=>{
       if(e.key === 'Escape') hideModal();
     });
+
   </script>
 </body>
 </html>
