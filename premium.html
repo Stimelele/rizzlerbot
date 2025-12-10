@@ -51,10 +51,9 @@
             padding: 0 24px;
         }
 
-        /* Header */
+        /* Header - IDENTYCZNY JAK NA STRONIE GŁÓWNEJ */
         header {
             padding: 24px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             position: sticky;
             top: 0;
             background: rgba(5, 5, 10, 0.9);
@@ -69,93 +68,94 @@
             gap: 20px;
         }
 
-        .logo {
+        .brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            text-decoration: none;
-            color: inherit;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent), #6f3bff);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 18px;
+        .logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: linear-gradient(180deg, #0b0b0f, #0a0a0d);
+            display: inline-grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .logo-text h1 {
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .brand-text h1 {
             font-size: 20px;
             font-weight: 800;
             margin: 0;
+            letter-spacing: -0.02em;
         }
 
-        .logo-text span {
+        .brand-text span {
             font-size: 12px;
             color: var(--muted);
         }
 
-        .nav-links {
+        .cta {
             display: flex;
-            gap: 20px;
+            gap: 10px;
             align-items: center;
-        }
-
-        .nav-link {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-link:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.03);
         }
 
         .btn {
+            background: linear-gradient(180deg, var(--accent), #6f3bff);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 0;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(155, 92, 255, 0.18);
+            text-decoration: none;
+            font-family: inherit;
+            font-size: 14px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
             transition: all 0.3s ease;
-            gap: 8px;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #6f3bff);
-            color: white;
-            box-shadow: 0 4px 15px rgba(155, 92, 255, 0.25);
-        }
-
-        .btn-primary:hover {
+        .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(155, 92, 255, 0.4);
+            box-shadow: 0 8px 24px rgba(155, 92, 255, 0.3);
         }
 
-        .btn-outline {
+        .btn.ghost {
             background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: none;
             color: var(--muted);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 9px 14px;
         }
 
-        .btn-outline:hover {
-            border-color: var(--accent);
+        .btn.ghost:hover {
+            border-color: rgba(255, 255, 255, 0.1);
             color: white;
+        }
+
+        .btn.premium {
+            background: linear-gradient(90deg, #ffd166, #f59e0b);
+            color: #000;
+            box-shadow: 0 6px 18px rgba(245, 158, 11, 0.25);
+        }
+
+        .btn.premium:hover {
+            background: linear-gradient(90deg, #ffda7a, #ffb347);
+            box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
         }
 
         /* Hero Section */
@@ -504,7 +504,7 @@
                 gap: 15px;
             }
             
-            .nav-links {
+            .cta {
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
@@ -539,27 +539,33 @@
             .price-amount {
                 font-size: 36px;
             }
+            
+            .btn {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header - IDENTYCZNY JAK NA STRONIE GŁÓWNEJ -->
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">R</div>
-                    <div class="logo-text">
-                        <h1>Rizzler<span style="color: var(--accent)">.</span></h1>
-                        <span>Discord Bot</span>
+                <div class="brand">
+                    <div class="logo" aria-hidden="true">
+                        <img src="logo.png" alt="Rizzler logo" onerror="this.style.display='none'">
                     </div>
-                </a>
-                
-                <div class="nav-links">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="commands.html" class="nav-link">Commands</a>
-                    <a href="premium.html" class="nav-link" style="color: var(--premium-gold);">Premium</a>
-                    <a href="index.html#inviteBtn" class="btn btn-outline">Invite Bot</a>
+                    <div class="brand-text">
+                        <h1>Rizzler<span style="color:var(--accent)">.</span></h1>
+                        <div style="font-size:12px; color:var(--muted)">4fun Discord bot • Tag. Roll. Rizz.</div>
+                    </div>
+                </div>
+
+                <div class="cta">
+                    <a class="btn" href="index.html" id="homeBtn">Home</a>
+                    <a class="btn ghost" href="commands.html" id="commandsBtn">Commands</a>
+                    <a class="btn premium" href="premium.html" id="premiumBtn">🌟 Premium</a>
                 </div>
             </div>
         </div>
@@ -575,8 +581,8 @@
             <h1>Level Up Your Rizz Game</h1>
             <p>Unlock exclusive features, higher rarity pulls, and customizations that make you stand out in every Discord server.</p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#pricing" class="btn btn-primary">View Plans</a>
-                <a href="#features" class="btn btn-outline">Explore Features</a>
+                <a href="#pricing" class="btn" style="background: var(--premium-gradient); border: none;">View Plans</a>
+                <a href="#features" class="btn ghost">Explore Features</a>
             </div>
         </div>
     </section>
@@ -627,7 +633,7 @@
                         </li>
                     </ul>
                     
-                    <a href="index.html" class="btn btn-outline" style="width: 100%;">Get Started</a>
+                    <a href="index.html" class="btn ghost" style="width: 100%;">Get Started</a>
                 </div>
                 
                 <!-- Premium Plan -->
@@ -668,7 +674,7 @@
                         </li>
                     </ul>
                     
-                    <a href="#cta" class="btn btn-primary" style="width: 100%; background: var(--premium-gradient); border: none;">Get Premium</a>
+                    <a href="#cta" class="btn premium" style="width: 100%;">Get Premium</a>
                 </div>
                 
                 <!-- Server Plan -->
@@ -708,7 +714,7 @@
                         </li>
                     </ul>
                     
-                    <a href="#cta" class="btn btn-outline" style="width: 100%;">Get Server Plan</a>
+                    <a href="#cta" class="btn ghost" style="width: 100%;">Get Server Plan</a>
                 </div>
             </div>
         </div>
@@ -830,10 +836,10 @@
             <h2>Ready to Elevate Your Rizz?</h2>
             <p>Join thousands of satisfied users who have already upgraded to Rizzler Premium. Start pulling better rizz today!</p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#" class="btn btn-primary" style="padding: 15px 30px; font-size: 16px;">
+                <button class="btn premium" style="padding: 15px 30px; font-size: 16px;" id="buyPremium">
                     🚀 Get Premium Now
-                </a>
-                <a href="index.html" class="btn btn-outline" style="padding: 15px 30px; font-size: 16px;">
+                </button>
+                <a href="index.html" class="btn ghost" style="padding: 15px 30px; font-size: 16px;">
                     Back to Home
                 </a>
             </div>
@@ -844,13 +850,15 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">R</div>
-                    <div class="logo-text">
-                        <h1>Rizzler<span style="color: var(--accent)">.</span></h1>
-                        <span>Discord Bot</span>
+                <div class="brand" style="justify-content: center;">
+                    <div class="logo" style="width: 40px; height: 40px;">
+                        <img src="logo.png" alt="Rizzler logo" onerror="this.style.display='none'">
                     </div>
-                </a>
+                    <div class="brand-text">
+                        <h1 style="font-size: 18px;">Rizzler<span style="color:var(--accent)">.</span></h1>
+                        <div style="font-size:11px; color:var(--muted)">4fun Discord bot</div>
+                    </div>
+                </div>
                 
                 <div class="footer-links">
                     <a href="index.html" class="footer-link">Home</a>
@@ -862,7 +870,7 @@
                 </div>
                 
                 <div class="copyright">
-                    © 2024 Rizzler. All rights reserved. This is a fan-made project. Not affiliated with Discord.
+                    © <span id="currentYear"></span> Rizzler. All rights reserved. This is a fan-made project. Not affiliated with Discord.
                 </div>
             </div>
         </div>
@@ -896,13 +904,24 @@
         });
 
         // Premium button handler
-        document.querySelectorAll('.btn-primary').forEach(button => {
-            if (button.textContent.includes('Get Premium')) {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('🎉 Premium purchase simulation!\n\nIn a real implementation, this would redirect to a payment processor.\n\nFor now, enjoy the Premium features on the main page!');
-                });
-            }
+        document.getElementById('buyPremium').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('🎉 Premium purchase simulation!\n\nIn a real implementation, this would redirect to a payment processor.\n\nFor now, enjoy the Premium features on the main page!');
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Logo fallback
+        document.querySelectorAll('.logo img').forEach(img => {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                const logoDiv = this.parentElement;
+                logoDiv.innerHTML = 'R';
+                logoDiv.style.color = 'var(--accent)';
+                logoDiv.style.fontWeight = '800';
+                logoDiv.style.fontSize = '20px';
+            });
         });
     </script>
 </body>
