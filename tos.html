@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rizzler — Terms of Service</title>
+  <meta name="description" content="Terms of Service for Rizzler Discord Bot" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#05050a;
+      --card:#0f1115;
+      --muted:#9aa0a6;
+      --accent:#9b5cff;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --success: #6ee7b7;
+      --danger: #ff6b6b;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(155,92,255,0.06), transparent 8%),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(255,80,180,0.04), transparent 8%),
+                  var(--bg);
+      color:#e7e9ee;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding-bottom:60px;
+      line-height:1.6;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:30px;}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo {
+      width:56px;height:56px;border-radius:12px;overflow:hidden;flex-shrink:0;
+      background:linear-gradient(180deg,#0b0b0f,#0a0a0d);
+      display:inline-grid;place-items:center;border:1px solid rgba(255,255,255,0.04);
+    }
+    .logo img{width:100%;height:100%;object-fit:cover;display:block}
+    h1{font-size:20px;margin:0;font-weight:800;letter-spacing:-0.02em}
+    .btn{
+      background:linear-gradient(180deg,var(--accent),#6f3bff);
+      color:white;padding:10px 16px;border-radius:999px;border:0;font-weight:600;cursor:pointer;
+      box-shadow:0 6px 18px rgba(155,92,255,0.18);text-decoration:none;
+      display:inline-block;
+    }
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);box-shadow:none;color:var(--muted);padding:9px 14px}
+
+    /* Content Styling */
+    .content-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);padding:30px;border-radius:16px;
+      box-shadow:0 6px 30px rgba(2,6,23,0.6);
+      margin-bottom:20px;
+    }
+    
+    h2{font-size:28px;margin-top:0;margin-bottom:20px;color:var(--accent);}
+    h3{font-size:20px;margin-top:25px;margin-bottom:15px;}
+    h4{font-size:16px;margin-top:20px;margin-bottom:10px;}
+    
+    p{margin-bottom:15px;}
+    ul, ol{padding-left:20px;margin-bottom:15px;}
+    li{margin-bottom:8px;}
+    
+    .highlight{
+      background:rgba(155,92,255,0.08);
+      border-left:3px solid var(--accent);
+      padding:15px;
+      border-radius:8px;
+      margin:20px 0;
+    }
+    
+    .section{margin-bottom:30px;}
+    
+    .last-updated{
+      background:rgba(255,255,255,0.02);
+      padding:15px;
+      border-radius:12px;
+      text-align:center;
+      margin-bottom:30px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    
+    footer{
+      margin-top:40px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid rgba(255,255,255,0.03);
+      padding-top:20px;
+    }
+    
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    
+    /* Mobile */
+    @media(max-width:768px){
+      .container{padding:15px;}
+      .content-card{padding:20px;}
+      h2{font-size:24px;}
+      header{flex-direction:column;align-items:flex-start;gap:15px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <img src="/logo.png" alt="Rizzler logo" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <h1>Rizzler<span style="color:var(--accent)">.</span></h1>
+          <div style="color:var(--muted);font-size:12px">Terms of Service</div>
+        </div>
+      </div>
+      <div>
+        <a class="btn ghost" href="index.html">← Back to Home</a>
+        <a class="btn" href="privacy.html">Privacy Policy</a>
+      </div>
+    </header>
+
+    <div class="last-updated">
+      <strong>Last Updated:</strong> <span id="currentDate"></span>
+    </div>
+
+    <div class="content-card">
+      <h2>Terms of Service</h2>
+      
+      <div class="section">
+        <h3>1. Acceptance of Terms</h3>
+        <p>By using the Rizzler Discord bot ("the Bot"), you agree to be bound by these Terms of Service ("ToS"). If you do not agree to these terms, please discontinue use of the Bot immediately.</p>
+      </div>
+
+      <div class="section">
+        <h3>2. Description of Service</h3>
+        <p>The Rizzler Bot is a Discord application designed for entertainment purposes that:</p>
+        <ul>
+          <li>Collects user suggestions for improvement</li>
+          <li>Stores command usage logs for functionality and debugging</li>
+          <li>Facilitates product purchases by collecting user email addresses</li>
+          <li>Enables product restoration to new Discord accounts when necessary</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>3. Data Collection and Usage</h3>
+        
+        <h4>3.1 Collected Information</h4>
+        <p>The Bot collects and processes:</p>
+        <ul>
+          <li><strong>Suggestions:</strong> Any feedback or suggestions voluntarily submitted by users</li>
+          <li><strong>Command Logs:</strong> Records of commands used, including timestamps and user IDs</li>
+          <li><strong>Purchase Information:</strong> Email addresses collected during product purchases</li>
+          <li><strong>Discord Data:</strong> User IDs, server IDs, and channel IDs necessary for Bot functionality</li>
+        </ul>
+
+        <h4>3.2 Purpose of Data Collection</h4>
+        <ul>
+          <li><strong>Suggestions:</strong> Used to improve Bot features and user experience</li>
+          <li><strong>Command Logs:</strong> Used for debugging, analytics, and monitoring proper functionality</li>
+          <li><strong>Email Addresses:</strong> Collected exclusively for product restoration purposes when users need to transfer purchases to new Discord accounts</li>
+          <li><strong>Discord Data:</strong> Required for the Bot's core functionality within Discord servers</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>4. User Responsibilities</h3>
+        <ul>
+          <li>You must comply with Discord's own Terms of Service</li>
+          <li>You may not use the Bot for illegal or harmful purposes</li>
+          <li>You must provide accurate information when making purchases</li>
+          <li>You are responsible for maintaining the security of your Discord account</li>
+          <li>You agree not to spam commands or abuse the Bot's functionality</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>5. Product Purchases and Restoration</h3>
+        <ul>
+          <li>When purchasing products through the Bot, you will be asked to provide a valid email address</li>
+          <li>This email address is stored solely for the purpose of verifying ownership and restoring purchases to new Discord accounts</li>
+          <li>Product restoration requires verification through the provided email address</li>
+          <li>The Bot owner reserves the right to refuse restoration if abuse is suspected</li>
+          <li>All sales are final unless otherwise specified</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>6. Data Retention and Deletion</h3>
+        <ul>
+          <li>Command logs are retained for a maximum of 90 days</li>
+          <li>Purchase records (including email addresses) are retained indefinitely to enable product restoration</li>
+          <li>Suggestions may be retained indefinitely for reference</li>
+          <li>Users may request data deletion by contacting the Bot owner (see Section 9)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>7. Limitation of Liability</h3>
+        <p>The Bot is provided "as is" without warranties of any kind. The Bot owner is not liable for:</p>
+        <ul>
+          <li>Any data loss or corruption</li>
+          <li>Service interruptions or discontinuation</li>
+          <li>Unauthorized access to data, though reasonable security measures are implemented</li>
+          <li>Any indirect, incidental, or consequential damages</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>8. Modifications to ToS</h3>
+        <p>The Bot owner reserves the right to modify these Terms at any time. Users will be notified of significant changes via Discord or the Bot's official server. Continued use of the Bot after changes constitutes acceptance of the modified terms.</p>
+      </div>
+
+      <div class="section">
+        <h3>9. Contact Information</h3>
+        <p>For questions about these Terms, data deletion requests, or other concerns:</p>
+        <div class="highlight">
+          <p><strong>Discord Support Server:</strong> <a href="https://discord.gg/example" target="_blank">https://discord.gg/example</a></p>
+          <p><strong>Email:</strong> support@rizzlerbot.com</p>
+          <p><strong>Data Deletion Requests:</strong> Please include your Discord user ID and email address used for purchases</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>10. Governing Law</h3>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the jurisdiction where the Bot owner is located, without regard to its conflict of law provisions.</p>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Rizzler — Built for fun on Discord • 
+      <a href="index.html">Home</a> • 
+      <a href="privacy.html">Privacy Policy</a> • 
+      <a href="commands.html">Commands</a> • 
+      <a href="premium.html">Premium</a>
+    </footer>
+  </div>
+
+  <script>
+    // Set current date
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    
+    // Set year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
