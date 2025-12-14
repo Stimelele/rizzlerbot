@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizzler Premium — Enhanced Discord Experience</title>
+    <meta name="description" content="Unlock exclusive features with Rizzler Premium — enhanced rizz pulls, customizations, and more!">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05050a;
+            --card: #0f1115;
+            --muted: #9aa0a6;
+            --accent: #9b5cff;
+            --accent-light: #b18bff;
+            --premium-gold: #ffd166;
+            --premium-gradient: linear-gradient(135deg, #ffd166 0%, #f59e0b 50%, #ef4444 100%);
+            --glass: rgba(255, 255, 255, 0.04);
+            --glass-2: rgba(255, 255, 255, 0.02);
+            --success: #6ee7b7;
+            --danger: #ff6b6b;
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(155, 92, 255, 0.08) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 107, 107, 0.05) 0%, transparent 20%),
+                var(--bg);
+            color: #e7e9ee;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            position: sticky;
+            top: 0;
+            background: rgba(5, 5, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), #6f3bff);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .logo-text h1 {
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .logo-text span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #6f3bff);
+            color: white;
+            box-shadow: 0 4px 15px rgba(155, 92, 255, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(155, 92, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 209, 102, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 209, 102, 0.1);
+            color: var(--premium-gold);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--premium-gold);
+            background: linear-gradient(180deg, rgba(255, 209, 102, 0.05), rgba(255, 209, 102, 0.02));
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--premium-gradient);
+            color: #000;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plan-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .plan-description {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 30px;
+            min-height: 40px;
+        }
+
+        .price {
+            margin-bottom: 30px;
+        }
+
+        .price-amount {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .price-period {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--success);
+        }
+
+        .feature-disabled {
+            color: var(--muted);
+            opacity: 0.5;
+        }
+
+        .feature-disabled .feature-icon {
+            color: var(--muted);
+        }
+
+        /* Features Section */
+        .features-detail {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(155, 92, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon-large {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), #6f3bff);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px 0;
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-question h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            color: var(--muted);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            color: var(--muted);
+            line-height: 1.6;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(155, 92, 255, 0.1), rgba(255, 209, 102, 0.05));
+            border-radius: 30px;
+            margin: 60px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: var(--muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .copyright {
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .price-amount {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">R</div>
+                    <div class="logo-text">
+                        <h1>Rizzler<span style="color: var(--accent)">.</span></h1>
+                        <span>Discord Bot</span>
+                    </div>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="commands.html" class="nav-link">Commands</a>
+                    <a href="premium.html" class="nav-link" style="color: var(--premium-gold);">Premium</a>
+                    <a href="index.html#inviteBtn" class="btn btn-outline">Invite Bot</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span>✨</span>
+                <span>PREMIUM EXPERIENCE</span>
+            </div>
+            <h1>Level Up Your Rizz Game</h1>
+            <p>Unlock exclusive features, higher rarity pulls, and customizations that make you stand out in every Discord server.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#pricing" class="btn btn-primary">View Plans</a>
+                <a href="#features" class="btn btn-outline">Explore Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Choose Your Plan</h2>
+                <p>Flexible pricing for every type of rizzler. Start free, upgrade when you're ready.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <div class="plan-name">Basic</div>
+                    <div class="plan-description">Perfect for trying out Rizzler</div>
+                    
+                    <div class="price">
+                        <div class="price-amount">FREE</div>
+                        <div class="price-period">Forever</div>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Basic Rizz Pulls</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Common & Rare Rarities</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Basic Commands</span>
+                        </li>
+                        <li class="feature-disabled">
+                            <span class="feature-icon">×</span>
+                            <span>No Mythic Rate Boost</span>
+                        </li>
+                        <li class="feature-disabled">
+                            <span class="feature-icon">×</span>
+                            <span>No Custom Rizz</span>
+                        </li>
+                        <li class="feature-disabled">
+                            <span class="feature-icon">×</span>
+                            <span>No Priority Support</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="index.html" class="btn btn-outline" style="width: 100%;">Get Started</a>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="plan-name">Premium</div>
+                    <div class="plan-description">For serious rizz collectors</div>
+                    
+                    <div class="price">
+                        <div class="price-amount">$4.99</div>
+                        <div class="price-period">per month</div>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span><strong>2x Higher Mythic Chance</strong></span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Custom Rizz Messages</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Exclusive Rizz Effects</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Priority Support</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Special Premium Badge</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Daily Bonus Pulls</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#cta" class="btn btn-primary" style="width: 100%; background: var(--premium-gradient); border: none;">Get Premium</a>
+                </div>
+                
+                <!-- Server Plan -->
+                <div class="pricing-card">
+                    <div class="plan-name">Server</div>
+                    <div class="plan-description">For entire Discord communities</div>
+                    
+                    <div class="price">
+                        <div class="price-amount">$9.99</div>
+                        <div class="price-period">per month</div>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span><strong>All Premium Features</strong></span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Unlimited Server Members</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Custom Server Rizz Themes</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Server Leaderboards</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Admin Control Panel</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>24/7 Priority Support</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#cta" class="btn btn-outline" style="width: 100%;">Get Server Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Detail -->
+    <section id="features" class="features-detail">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium Features</h2>
+                <p>Discover what makes Rizzler Premium special</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-large">🎁</div>
+                    <h3>Higher Rarity Chance</h3>
+                    <p>Get 2x higher chance of pulling Mythic and Legendary rizz. Your luck just got upgraded!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">✨</div>
+                    <h3>Special Effects</h3>
+                    <p>Exclusive visual effects and animations when pulling rizz. Make every pull a spectacle.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">🎨</div>
+                    <h3>Custom Rizz</h3>
+                    <p>Create your own custom rizz messages and share unique content with friends.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">🏆</div>
+                    <h3>Premium Badge</h3>
+                    <p>Show off your Premium status with an exclusive badge next to your name.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">⚡</div>
+                    <h3>Priority Support</h3>
+                    <p>Get help faster with priority access to our support team. We're here for you!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">🔮</div>
+                    <h3>Daily Bonuses</h3>
+                    <p>Receive daily bonus pulls and special rewards just for being Premium.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Got questions? We've got answers.</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <h3>How does Premium improve my rizz pulls?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Premium members get 2x higher chance of pulling Mythic rizz, exclusive visual effects, and the ability to create custom rizz messages that stand out in any server.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I cancel my Premium subscription anytime?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! You can cancel your Premium subscription at any time. You'll keep Premium benefits until the end of your billing period.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is there a free trial for Premium?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We occasionally offer free trials for new features. Follow our Discord server for announcements about trial opportunities.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I upgrade from Basic to Premium?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Simply click the "Get Premium" button on this page and follow the payment process. Your account will be upgraded immediately.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What payment methods do you accept?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We accept all major credit cards, PayPal, and various cryptocurrency options. All payments are processed securely.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2>Ready to Elevate Your Rizz?</h2>
+            <p>Join thousands of satisfied users who have already upgraded to Rizzler Premium. Start pulling better rizz today!</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" class="btn btn-primary" style="padding: 15px 30px; font-size: 16px;">
+                    🚀 Get Premium Now
+                </a>
+                <a href="index.html" class="btn btn-outline" style="padding: 15px 30px; font-size: 16px;">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">R</div>
+                    <div class="logo-text">
+                        <h1>Rizzler<span style="color: var(--accent)">.</span></h1>
+                        <span>Discord Bot</span>
+                    </div>
+                </a>
+                
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="commands.html" class="footer-link">Commands</a>
+                    <a href="premium.html" class="footer-link">Premium</a>
+                    <a href="#" class="footer-link">Support</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+                
+                <div class="copyright">
+                    © 2024 Rizzler. All rights reserved. This is a fan-made project. Not affiliated with Discord.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Premium button handler
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            if (button.textContent.includes('Get Premium')) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('🎉 Premium purchase simulation!\n\nIn a real implementation, this would redirect to a payment processor.\n\nFor now, enjoy the Premium features on the main page!');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
