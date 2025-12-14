@@ -3,23 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rizzler Premium — Enhanced Discord Experience</title>
-    <meta name="description" content="Unlock exclusive features with Rizzler Premium — enhanced rizz pulls, customizations, and more!">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Privacy Policy — Rizzler Discord Bot</title>
+    <meta name="description" content="Rizzler Privacy Policy — Learn how we handle your data and protect your privacy.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #05050a;
             --card: #0f1115;
             --muted: #9aa0a6;
             --accent: #9b5cff;
-            --accent-light: #b18bff;
-            --premium-gold: #ffd166;
-            --premium-gradient: linear-gradient(135deg, #ffd166 0%, #f59e0b 50%, #ef4444 100%);
             --glass: rgba(255, 255, 255, 0.04);
-            --glass-2: rgba(255, 255, 255, 0.02);
-            --success: #6ee7b7;
-            --danger: #ff6b6b;
-            --max-width: 1200px;
+            --max-width: 900px;
         }
 
         * {
@@ -36,8 +30,8 @@
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(155, 92, 255, 0.08) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 107, 107, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 10% 20%, rgba(155, 92, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(107, 107, 255, 0.03) 0%, transparent 20%),
                 var(--bg);
             color: #e7e9ee;
             line-height: 1.6;
@@ -54,12 +48,12 @@
         /* Header */
         header {
             padding: 24px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             position: sticky;
             top: 0;
             background: rgba(5, 5, 10, 0.9);
             backdrop-filter: blur(10px);
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .header-content {
@@ -69,400 +63,182 @@
             gap: 20px;
         }
 
-        .logo {
+        .brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            text-decoration: none;
-            color: inherit;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent), #6f3bff);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 18px;
+        .logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: linear-gradient(180deg, #0b0b0f, #0a0a0d);
+            display: inline-grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .logo-text h1 {
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .brand-text h1 {
             font-size: 20px;
             font-weight: 800;
             margin: 0;
+            letter-spacing: -0.02em;
         }
 
-        .logo-text span {
+        .brand-text span {
             font-size: 12px;
             color: var(--muted);
         }
 
-        .nav-links {
+        .cta {
             display: flex;
-            gap: 20px;
+            gap: 10px;
             align-items: center;
-        }
-
-        .nav-link {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-link:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.03);
         }
 
         .btn {
+            background: linear-gradient(180deg, var(--accent), #6f3bff);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 0;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(155, 92, 255, 0.18);
+            text-decoration: none;
+            font-family: inherit;
+            font-size: 14px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
             transition: all 0.3s ease;
-            gap: 8px;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #6f3bff);
-            color: white;
-            box-shadow: 0 4px 15px rgba(155, 92, 255, 0.25);
-        }
-
-        .btn-primary:hover {
+        .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(155, 92, 255, 0.4);
+            box-shadow: 0 8px 24px rgba(155, 92, 255, 0.3);
         }
 
-        .btn-outline {
+        .btn.ghost {
             background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: none;
             color: var(--muted);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 9px 14px;
         }
 
-        .btn-outline:hover {
-            border-color: var(--accent);
+        .btn.ghost:hover {
+            border-color: rgba(255, 255, 255, 0.1);
             color: white;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
+        /* Main Content */
+        .content {
+            padding: 60px 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-header {
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 50px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 209, 102, 0.1) 0%, transparent 70%);
-            z-index: -1;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 209, 102, 0.1);
-            color: var(--premium-gold);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero h1 {
-            font-size: 48px;
+        .content-header h1 {
+            font-size: 42px;
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: var(--premium-gradient);
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--accent), #6f3bff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero p {
-            font-size: 18px;
-            color: var(--muted);
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        /* Pricing Section */
-        .pricing {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
+        .content-header p {
             color: var(--muted);
             font-size: 16px;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
+        .last-updated {
+            display: inline-block;
+            background: rgba(155, 92, 255, 0.1);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 15px;
         }
 
-        .pricing-card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px 30px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .pricing-card.featured {
-            border: 2px solid var(--premium-gold);
-            background: linear-gradient(180deg, rgba(255, 209, 102, 0.05), rgba(255, 209, 102, 0.02));
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--premium-gradient);
-            color: #000;
-            padding: 6px 20px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .plan-name {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .plan-description {
-            color: var(--muted);
-            font-size: 14px;
-            margin-bottom: 30px;
-            min-height: 40px;
-        }
-
-        .price {
-            margin-bottom: 30px;
-        }
-
-        .price-amount {
-            font-size: 48px;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 5px;
-        }
-
-        .price-period {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 40px;
-        }
-
-        .features-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .features-list li:last-child {
-            border-bottom: none;
-        }
-
-        .feature-icon {
-            width: 20px;
-            height: 20px;
-            color: var(--success);
-        }
-
-        .feature-disabled {
-            color: var(--muted);
-            opacity: 0.5;
-        }
-
-        .feature-disabled .feature-icon {
-            color: var(--muted);
-        }
-
-        /* Features Section */
-        .features-detail {
-            padding: 80px 0;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
+        .policy-content {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
             border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 16px;
-            padding: 30px;
-            transition: all 0.3s ease;
+            padding: 40px;
         }
 
-        .feature-card:hover {
-            border-color: rgba(155, 92, 255, 0.2);
-            transform: translateY(-5px);
+        .policy-section {
+            margin-bottom: 40px;
         }
 
-        .feature-icon-large {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--accent), #6f3bff);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 24px;
+        .policy-section:last-child {
+            margin-bottom: 0;
         }
 
-        .feature-card h3 {
-            font-size: 20px;
+        .policy-section h2 {
+            font-size: 22px;
             font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* FAQ Section */
-        .faq {
-            padding: 80px 0;
-        }
-
-        .faq-grid {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 25px 0;
-        }
-
-        .faq-item:first-child {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .faq-question h3 {
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .faq-toggle {
-            font-size: 20px;
-            color: var(--muted);
-            transition: transform 0.3s ease;
-        }
-
-        .faq-answer {
-            color: var(--muted);
-            line-height: 1.6;
-            margin-top: 15px;
-            display: none;
-        }
-
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        .faq-item.active .faq-toggle {
-            transform: rotate(45deg);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 80px 0;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(155, 92, 255, 0.1), rgba(255, 209, 102, 0.05));
-            border-radius: 30px;
-            margin: 60px 0;
-        }
-
-        .cta-section h2 {
-            font-size: 36px;
-            font-weight: 800;
             margin-bottom: 20px;
+            color: #fff;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .cta-section p {
+        .policy-section p {
             color: var(--muted);
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 40px;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .policy-section ul {
+            color: var(--muted);
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .policy-section li {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .highlight {
+            background: rgba(155, 92, 255, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .highlight p {
+            margin: 0;
+            color: #e7e9ee;
+            font-weight: 500;
         }
 
         /* Footer */
         footer {
-            padding: 60px 0 30px;
+            padding: 40px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -504,21 +280,17 @@
                 gap: 15px;
             }
             
-            .nav-links {
+            .cta {
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
             }
             
-            .hero h1 {
-                font-size: 36px;
+            .content-header h1 {
+                font-size: 32px;
             }
             
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .pricing-card {
+            .policy-content {
                 padding: 30px 20px;
             }
         }
@@ -528,16 +300,12 @@
                 padding: 0 16px;
             }
             
-            .hero h1 {
+            .content-header h1 {
                 font-size: 28px;
             }
             
-            .section-title h2 {
-                font-size: 28px;
-            }
-            
-            .price-amount {
-                font-size: 36px;
+            .policy-section h2 {
+                font-size: 20px;
             }
         }
     </style>
@@ -547,333 +315,169 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">R</div>
-                    <div class="logo-text">
-                        <h1>Rizzler<span style="color: var(--accent)">.</span></h1>
-                        <span>Discord Bot</span>
+                <div class="brand">
+                    <div class="logo" aria-hidden="true">
+                        <img src="logo.png" alt="Rizzler logo" onerror="this.style.display='none'">
                     </div>
-                </a>
-                
-                <div class="nav-links">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="commands.html" class="nav-link">Commands</a>
-                    <a href="premium.html" class="nav-link" style="color: var(--premium-gold);">Premium</a>
-                    <a href="index.html#inviteBtn" class="btn btn-outline">Invite Bot</a>
+                    <div class="brand-text">
+                        <h1>Rizzler<span style="color:var(--accent)">.</span></h1>
+                        <div style="font-size:12px; color:var(--muted)">4fun Discord bot • Tag. Roll. Rizz.</div>
+                    </div>
+                </div>
+
+                <div class="cta">
+                    <a class="btn" href="index.html" id="homeBtn">Home</a>
+                    <a class="btn ghost" href="commands.html" id="commandsBtn">Commands</a>
+                    <a class="btn ghost" href="premium.html" id="premiumBtn">Premium</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Main Content -->
+    <main class="content">
         <div class="container">
-            <div class="hero-badge">
-                <span>✨</span>
-                <span>PREMIUM EXPERIENCE</span>
+            <div class="content-header">
+                <h1>Privacy Policy</h1>
+                <p>How Rizzler handles your data and protects your privacy.</p>
+                <div class="last-updated">Last Updated: December 2024</div>
             </div>
-            <h1>Level Up Your Rizz Game</h1>
-            <p>Unlock exclusive features, higher rarity pulls, and customizations that make you stand out in every Discord server.</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#pricing" class="btn btn-primary">View Plans</a>
-                <a href="#features" class="btn btn-outline">Explore Features</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2>Choose Your Plan</h2>
-                <p>Flexible pricing for every type of rizzler. Start free, upgrade when you're ready.</p>
-            </div>
-            
-            <div class="pricing-grid">
-                <!-- Free Plan -->
-                <div class="pricing-card">
-                    <div class="plan-name">Basic</div>
-                    <div class="plan-description">Perfect for trying out Rizzler</div>
-                    
-                    <div class="price">
-                        <div class="price-amount">FREE</div>
-                        <div class="price-period">Forever</div>
-                    </div>
-                    
-                    <ul class="features-list">
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Basic Rizz Pulls</span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Common & Rare Rarities</span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Basic Commands</span>
-                        </li>
-                        <li class="feature-disabled">
-                            <span class="feature-icon">×</span>
-                            <span>No Mythic Rate Boost</span>
-                        </li>
-                        <li class="feature-disabled">
-                            <span class="feature-icon">×</span>
-                            <span>No Custom Rizz</span>
-                        </li>
-                        <li class="feature-disabled">
-                            <span class="feature-icon">×</span>
-                            <span>No Priority Support</span>
-                        </li>
+            <div class="policy-content">
+                <div class="policy-section">
+                    <h2>1. Introduction</h2>
+                    <p>Welcome to Rizzler's Privacy Policy. This document explains how we collect, use, and protect your information when you use our Discord bot. We are committed to protecting your privacy and being transparent about our practices.</p>
+                    <p>Rizzler is a fun Discord bot designed for entertainment purposes. We take your privacy seriously and only collect minimal data necessary for the bot to function properly.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h2>2. Information We Collect</h2>
+                    <p>Rizzler collects the following types of information:</p>
+                    <ul>
+                        <li><strong>Discord User Information:</strong> Your Discord user ID, username, and discriminator when you interact with the bot.</li>
+                        <li><strong>Server Information:</strong> Server ID and basic server metadata when Rizzler is added to a Discord server.</li>
+                        <li><strong>Command Usage:</strong> Commands you use and their parameters (e.g., when you use the /pull command).</li>
+                        <li><strong>Game Data:</strong> Your rizz pull results, collected items, and game progress.</li>
                     </ul>
                     
-                    <a href="index.html" class="btn btn-outline" style="width: 100%;">Get Started</a>
-                </div>
-                
-                <!-- Premium Plan -->
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">Most Popular</div>
-                    <div class="plan-name">Premium</div>
-                    <div class="plan-description">For serious rizz collectors</div>
-                    
-                    <div class="price">
-                        <div class="price-amount">$4.99</div>
-                        <div class="price-period">per month</div>
+                    <div class="highlight">
+                        <p>⚠️ <strong>Important:</strong> We do NOT collect sensitive personal information, messages, email addresses, or payment information. Rizzler is a free bot and does not process payments.</p>
                     </div>
-                    
-                    <ul class="features-list">
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span><strong>2x Higher Mythic Chance</strong></span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Custom Rizz Messages</span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Exclusive Rizz Effects</span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Priority Support</span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Special Premium Badge</span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Daily Bonus Pulls</span>
-                        </li>
+                </div>
+
+                <div class="policy-section">
+                    <h2>3. How We Use Your Information</h2>
+                    <p>We use the collected information for the following purposes:</p>
+                    <ul>
+                        <li>To provide and maintain the bot's functionality</li>
+                        <li>To store your game progress and rizz collection</li>
+                        <li>To improve the bot's features and user experience</li>
+                        <li>To prevent abuse and ensure fair usage</li>
+                        <li>For statistical analysis (anonymized and aggregated)</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h2>4. Data Storage and Security</h2>
+                    <p>Your data is stored securely and protected with the following measures:</p>
+                    <ul>
+                        <li>Data is stored in encrypted databases</li>
+                        <li>Regular security updates and monitoring</li>
+                        <li>Limited access to data (only essential personnel)</li>
+                        <li>Regular backups to prevent data loss</li>
+                    </ul>
+                    <p>We retain your data only as long as necessary for the bot to function. You can request data deletion at any time by contacting us.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h2>5. Third-Party Services</h2>
+                    <p>Rizzler uses the following third-party services:</p>
+                    <ul>
+                        <li><strong>Discord API:</strong> For bot functionality and integration</li>
+                        <li><strong>Hosting Services:</strong> For bot hosting and data storage</li>
+                        <li><strong>Analytics Services:</strong> For usage statistics (anonymous)</li>
+                    </ul>
+                    <p>These services have their own privacy policies, and we encourage you to review them.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h2>6. Your Rights</h2>
+                    <p>As a user, you have the following rights regarding your data:</p>
+                    <ul>
+                        <li><strong>Right to Access:</strong> Request a copy of your stored data</li>
+                        <li><strong>Right to Deletion:</strong> Request deletion of your data</li>
+                        <li><strong>Right to Correction:</strong> Request correction of inaccurate data</li>
+                        <li><strong>Right to Opt-out:</strong> Stop using the bot at any time</li>
+                    </ul>
+                    <p>To exercise these rights, contact us through our support channels.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h2>7. Children's Privacy</h2>
+                    <p>Rizzler is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h2>8. Changes to This Policy</h2>
+                    <p>We may update this Privacy Policy from time to time. We will notify users of any significant changes by:</p>
+                    <ul>
+                        <li>Posting an announcement in our Discord server</li>
+                        <li>Updating the "Last Updated" date on this page</li>
+                        <li>Adding a notification in the bot's help command</li>
+                    </ul>
+                    <p>Your continued use of Rizzler after changes constitutes acceptance of the updated policy.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h2>9. Contact Us</h2>
+                    <p>If you have any questions about this Privacy Policy or how we handle your data, please contact us:</p>
+                    <ul>
+                        <li><strong>Discord Server:</strong> Join our support server</li>
+                        <li><strong>Email:</strong> privacy@rizzlerbot.com</li>
+                        <li><strong>GitHub:</strong> Open an issue on our repository</li>
                     </ul>
                     
-                    <a href="#cta" class="btn btn-primary" style="width: 100%; background: var(--premium-gradient); border: none;">Get Premium</a>
-                </div>
-                
-                <!-- Server Plan -->
-                <div class="pricing-card">
-                    <div class="plan-name">Server</div>
-                    <div class="plan-description">For entire Discord communities</div>
-                    
-                    <div class="price">
-                        <div class="price-amount">$9.99</div>
-                        <div class="price-period">per month</div>
-                    </div>
-                    
-                    <ul class="features-list">
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span><strong>All Premium Features</strong></span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Unlimited Server Members</span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Custom Server Rizz Themes</span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Server Leaderboards</span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>Admin Control Panel</span>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✓</span>
-                            <span>24/7 Priority Support</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="#cta" class="btn btn-outline" style="width: 100%;">Get Server Plan</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Detail -->
-    <section id="features" class="features-detail">
-        <div class="container">
-            <div class="section-title">
-                <h2>Premium Features</h2>
-                <p>Discover what makes Rizzler Premium special</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon-large">🎁</div>
-                    <h3>Higher Rarity Chance</h3>
-                    <p>Get 2x higher chance of pulling Mythic and Legendary rizz. Your luck just got upgraded!</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-large">✨</div>
-                    <h3>Special Effects</h3>
-                    <p>Exclusive visual effects and animations when pulling rizz. Make every pull a spectacle.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-large">🎨</div>
-                    <h3>Custom Rizz</h3>
-                    <p>Create your own custom rizz messages and share unique content with friends.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-large">🏆</div>
-                    <h3>Premium Badge</h3>
-                    <p>Show off your Premium status with an exclusive badge next to your name.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-large">⚡</div>
-                    <h3>Priority Support</h3>
-                    <p>Get help faster with priority access to our support team. We're here for you!</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon-large">🔮</div>
-                    <h3>Daily Bonuses</h3>
-                    <p>Receive daily bonus pulls and special rewards just for being Premium.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Got questions? We've got answers.</p>
-            </div>
-            
-            <div class="faq-grid">
-                <div class="faq-item active">
-                    <div class="faq-question">
-                        <h3>How does Premium improve my rizz pulls?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Premium members get 2x higher chance of pulling Mythic rizz, exclusive visual effects, and the ability to create custom rizz messages that stand out in any server.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Can I cancel my Premium subscription anytime?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Yes! You can cancel your Premium subscription at any time. You'll keep Premium benefits until the end of your billing period.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Is there a free trial for Premium?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        We occasionally offer free trials for new features. Follow our Discord server for announcements about trial opportunities.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How do I upgrade from Basic to Premium?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Simply click the "Get Premium" button on this page and follow the payment process. Your account will be upgraded immediately.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What payment methods do you accept?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        We accept all major credit cards, PayPal, and various cryptocurrency options. All payments are processed securely.
+                    <div class="highlight">
+                        <p>📧 <strong>For data deletion requests:</strong> Please include your Discord user ID and specify what data you want deleted. We process these requests within 30 days.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="cta" class="cta-section">
-        <div class="container">
-            <h2>Ready to Elevate Your Rizz?</h2>
-            <p>Join thousands of satisfied users who have already upgraded to Rizzler Premium. Start pulling better rizz today!</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#" class="btn btn-primary" style="padding: 15px 30px; font-size: 16px;">
-                    🚀 Get Premium Now
-                </a>
-                <a href="index.html" class="btn btn-outline" style="padding: 15px 30px; font-size: 16px;">
-                    Back to Home
-                </a>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">R</div>
-                    <div class="logo-text">
-                        <h1>Rizzler<span style="color: var(--accent)">.</span></h1>
-                        <span>Discord Bot</span>
-                    </div>
-                </a>
-                
                 <div class="footer-links">
                     <a href="index.html" class="footer-link">Home</a>
                     <a href="commands.html" class="footer-link">Commands</a>
                     <a href="premium.html" class="footer-link">Premium</a>
-                    <a href="#" class="footer-link">Support</a>
-                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="pp.html" class="footer-link" style="color: var(--accent);">Privacy Policy</a>
                     <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Support</a>
                 </div>
                 
                 <div class="copyright">
-                    © 2024 Rizzler. All rights reserved. This is a fan-made project. Not affiliated with Discord.
+                    © <span id="currentYear"></span> Rizzler. All rights reserved. This is a fan-made project. Not affiliated with Discord.
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                item.classList.toggle('active');
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Logo fallback
+        document.querySelectorAll('.logo img').forEach(img => {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                const logoDiv = this.parentElement;
+                logoDiv.innerHTML = 'R';
+                logoDiv.style.color = 'var(--accent)';
+                logoDiv.style.fontWeight = '800';
+                logoDiv.style.fontSize = '20px';
             });
         });
 
@@ -888,21 +492,11 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
             });
-        });
-
-        // Premium button handler
-        document.querySelectorAll('.btn-primary').forEach(button => {
-            if (button.textContent.includes('Get Premium')) {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('🎉 Premium purchase simulation!\n\nIn a real implementation, this would redirect to a payment processor.\n\nFor now, enjoy the Premium features on the main page!');
-                });
-            }
         });
     </script>
 </body>
